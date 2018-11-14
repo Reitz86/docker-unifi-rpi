@@ -4,7 +4,9 @@ services:
     image: ryansch/unifi-rpi:latest
     container_name: unifi
     restart: always
-    network_mode: host
+    network_mode: bridge
+    ports:
+      - "8443:8443"
     volumes:
       # Unifi v5.0.7 creates all of these directories (some remain empty)
       - config:/var/lib/unifi
