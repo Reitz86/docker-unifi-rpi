@@ -6,7 +6,17 @@ services:
     restart: always
     network_mode: bridge
     ports:
-      - "8443:8443"
+      - "3478" # Port used for STUN.
+      - "8080" # Port used for device and controller communication.
+      - "8443" # Port used for HTTPS portal redirection.
+      - "8880" # Port used for HTTP portal redirection.
+      - "8843" # Port used for HTTPS portal redirection.
+      - "6789" # Port used for UniFi mobile speed test.
+      - "27117" # Port used for local-bound database communication.
+      - "5656-5699" # Ports used by AP-EDU broadcasting.
+      - "10001" # Port used for AP discovery
+      - "1900" # Port used for "Make controller discoverable on L2 network" in controller settings.
+      - "1022" # Port used when UniFi devices or the controller is accessed via SSH ! Remapped to 1022
     volumes:
       # Unifi v5.0.7 creates all of these directories (some remain empty)
       - config:/var/lib/unifi
